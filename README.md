@@ -38,27 +38,7 @@ pip install -r requirements.txt
 2. Sign in with your Riot account
 3. Generate a Development API Key
 
-### 3. Configure API Key
-
-You have two options:
-
-**Option A: Using Streamlit Secrets (Recommended for deployment)**
-
-1. Copy the example secrets file:
-   ```bash
-   cp .streamlit/secrets.toml.example .streamlit/secrets.toml
-   ```
-
-2. Edit `.streamlit/secrets.toml` and add your API key:
-   ```toml
-   RIOT_API_KEY = "RGAPI-your-actual-api-key"
-   ```
-
-**Option B: Enter API Key in the App**
-
-Simply enter your API key in the sidebar when running the app.
-
-### 4. Run the Application
+### 3. Run the Application
 
 ```bash
 streamlit run streamlit_app.py
@@ -68,7 +48,7 @@ streamlit run streamlit_app.py
 
 1. Open the application in your browser
 2. Select your region from the sidebar
-3. Enter your Riot API Key (if not configured in secrets)
+3. Enter your Riot API Key in the sidebar
 4. Enter a summoner name
 5. Click "Fetch Data"
 

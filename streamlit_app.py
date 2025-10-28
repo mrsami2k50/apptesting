@@ -3,8 +3,6 @@ import requests
 import time
 from typing import Optional, List, Dict
 
-# Riot API Configuration
-RIOT_API_KEY = st.secrets.get("RIOT_API_KEY", "")
 
 class RiotAPI:
     """Riot Games API Client"""
@@ -163,7 +161,7 @@ with st.sidebar:
     routing = routing_map.get(region, "asia")
 
     # API Key input
-    api_key_input = st.text_input("Riot API Key", value=RIOT_API_KEY, type="password")
+    api_key_input = st.text_input("Riot API Key", type="password", placeholder="RGAPI-...")
 
     st.info("Get your API key from [Riot Developer Portal](https://developer.riotgames.com/)")
 
