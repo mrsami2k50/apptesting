@@ -1,5 +1,6 @@
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # suppress TensorFlow logs
+os.environ['MPLBACKEND'] = 'Agg'
 
 # Force headless backend before importing pyplot
 import matplotlib
