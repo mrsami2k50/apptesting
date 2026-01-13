@@ -24,9 +24,12 @@ warnings.simplefilter(action='ignore', category=UserWarning)
 # stock_no = '3006.TW'
 stock_no = '5234.TW'
 
-ticker = yf.Ticker(stock_no)
-info = ticker.info
-company_name = info.get("longName", "Name not available")
+# ticker = yf.Ticker(stock_no)
+# info = ticker.info
+# company_name = info.get("longName", "Name not available")
+
+# Use:
+company_name = "Lungteh Shipbuilding"  # hardcode
 
 start_date = '2025-01-01'  # past date
 end_date = '2026-05-30'    # today's date
