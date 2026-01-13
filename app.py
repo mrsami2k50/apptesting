@@ -13,8 +13,7 @@ import streamlit as st
 from matplotlib.figure import Figure
 
 # Streamlit header
-st.header("Stock Price Prediction: Lungteh Shipbuilding")
-
+# st.header("Stock Price Prediction: Lungteh Shipbuilding")
 # Ignore warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 warnings.simplefilter(action='ignore', category=UserWarning)
@@ -24,6 +23,12 @@ warnings.simplefilter(action='ignore', category=UserWarning)
 # company_name = "Lungteh Shipbuilding"
 stock_no = st.text_input("Enter Stock Symbol (e.g., 5234.TW)", value="5234.TW")
 company_name = st.text_input("Enter Company Name", value="Lungteh Shipbuilding")
+
+st.set_page_config(
+    page_title=f"Stock Price Prediction for {company_name}",
+    layout="wide",      # <- This makes the page full-width
+    initial_sidebar_state="expanded"
+)
 
 
 # Date range
