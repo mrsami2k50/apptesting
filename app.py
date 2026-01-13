@@ -18,17 +18,19 @@ from matplotlib.figure import Figure
 warnings.simplefilter(action='ignore', category=FutureWarning)
 warnings.simplefilter(action='ignore', category=UserWarning)
 
+st.set_page_config(page_title="Stock Price Prediction", layout="wide")
+
 # Stock info
 # stock_no = '5234.TW'
 # company_name = "Lungteh Shipbuilding"
-stock_no = st.text_input("Enter Stock Symbol (e.g., 5234.TW)", value="5234.TW")
-company_name = st.text_input("Enter Company Name", value="Lungteh Shipbuilding")
+stock_no = st.sidebar.text_input("Enter Stock Symbol (e.g., 5234.TW)", value="5234.TW")
+company_name = st.sidebar.text_input("Enter Company Name", value="Lungteh Shipbuilding")
 
-st.set_page_config(
-    page_title=f"Stock Price Prediction for {company_name}",
-    layout="wide",      # <- This makes the page full-width
-    initial_sidebar_state="expanded"
-)
+# st.set_page_config(
+#     page_title=f"Stock Price Prediction for {company_name}",
+#     layout="wide",      # <- This makes the page full-width
+#     initial_sidebar_state="expanded"
+# )
 
 st.header(f"Stock Price Prediction: {company_name}")
 
