@@ -1,24 +1,16 @@
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # suppress TensorFlow logs
-os.environ['MPLBACKEND'] = 'Agg'
-
-# Force headless backend before importing pyplot
-import matplotlib
-matplotlib.use('Agg')
+os.environ['MPLBACKEND'] = 'Agg'         # ensure headless matplotlib
 
 import numpy as np
 import pandas as pd
 import yfinance as yf
-import matplotlib.pyplot as plt  # now safe
-from matplotlib.figure import Figure
-import io
-import base64
 from sklearn.preprocessing import MinMaxScaler
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM, Dense
 import warnings
 import streamlit as st
-
+from matplotlib.figure import Figure
 
 # Streamlit header
 st.header("Stock Price Prediction: Lungteh Shipbuilding")
@@ -69,7 +61,7 @@ model.add(Dense(1))
 model.compile(optimizer='adam', loss='mean_squared_error')
 
 # Train model
-model.fit(X, y, epochs=20, batch_size=32, verbose=0)  # silent training in Streamlit
+model.fit(X, y, epochs=20, batch_size=32, verbose=0)
 
 # Predict next 7 days
 last_60_days = close_scaled[-60:]
@@ -88,9 +80,9 @@ st.subheader("Predicted Closing Prices for Next 7 Days")
 for i, price in enumerate(predictions, 1):
     st.write(f"Day {i}: NT$ {price[0]:.2f}")
 
-# Plot historical + predicted
+# Plot historical + predicted WITHOUT pyplot
 future_dates = pd.date_range(start=df['Date'].iloc[-1] + pd.Timedelta(days=1), periods=7)
-# Create figure
+
 fig = Figure(figsize=(10,6))
 ax = fig.subplots()
 ax.plot(df['Date'], close_prices, label='Historical Close Price')
@@ -100,5 +92,5 @@ ax.set_ylabel('Price (NT$)')
 ax.set_title(f'Stock Price Prediction for {company_name}')
 ax.legend()
 
-# Render figure in Streamlit
-st.pyplot(fig)gcf())
+# Show plot in Streamlit
+st.pyplot(fig)
