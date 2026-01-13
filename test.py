@@ -115,26 +115,13 @@ for i, price in enumerate(predictions, 1):
 # Step 10: Plot the results
 plt.figure(figsize=(10,6))
 plt.plot(df['Date'], close_prices, label='Historical Close Price')
-future_dates = pd.date_range(start=df['Date'].iloc[-1] + pd.Timedelta(days=1), periods=7)
 plt.plot(future_dates, predictions, label='Predicted Next 7 Days', marker='o')
-
-# Create multiline text for predicted prices
-pred_text = "Predicted prices for next 7 days:\n"
-pred_text += "\n".join([f"Day {i+1}: NT$ {price[0]:.2f}" for i, price in enumerate(predictions)])
-
-# Coordinates for the text: x just a bit after the last future date, y near top of y-axis
-x_pos = future_dates[-1] + pd.Timedelta(days=2)
-y_pos = max(close_prices) * 1.05
-
-plt.text(x_pos, y_pos, pred_text, fontsize=9, verticalalignment='top', 
-         bbox=dict(facecolor='white', alpha=0.8, edgecolor='gray'))
-
 plt.xlabel('Date')
 plt.ylabel('Price (NT$)')
 plt.title(f'Stock Price Prediction for {company_name}')
 plt.legend()
 
-# In Streamlit, use this to render the figure
+# Display the figure in Streamlit
 st.pyplot(plt.gcf())
 
 # # Step 10: Plot the results
