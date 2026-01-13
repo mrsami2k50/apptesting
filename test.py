@@ -1,17 +1,20 @@
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # suppress TensorFlow logs
 
+# Force headless backend before importing pyplot
+import matplotlib
+matplotlib.use('Agg')
+
 import numpy as np
 import pandas as pd
 import yfinance as yf
-import matplotlib
-matplotlib.use('Agg')  # headless backend for Streamlit
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt  # now safe
 from sklearn.preprocessing import MinMaxScaler
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM, Dense
 import warnings
 import streamlit as st
+
 
 # Streamlit header
 st.header("Stock Price Prediction: Lungteh Shipbuilding")
