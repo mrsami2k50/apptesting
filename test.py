@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 import yfinance as yf
 import matplotlib
-# matplotlib.use('TkAgg')
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import MinMaxScaler
 from tensorflow.keras.models import Sequential
