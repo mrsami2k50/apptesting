@@ -20,8 +20,11 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 warnings.simplefilter(action='ignore', category=UserWarning)
 
 # Stock info
-stock_no = '5234.TW'
-company_name = "Lungteh Shipbuilding"
+# stock_no = '5234.TW'
+# company_name = "Lungteh Shipbuilding"
+stock_no = st.text_input("Enter Stock Symbol (e.g., 5234.TW)", value="5234.TW")
+company_name = st.text_input("Enter Company Name", value="Lungteh Shipbuilding")
+
 
 # Date range
 start_date = '2025-01-01'
