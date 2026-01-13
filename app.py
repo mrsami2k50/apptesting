@@ -30,6 +30,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+st.header(f"Stock Price Prediction: {company_name}")
 
 # Date range
 start_date = '2025-01-01'
