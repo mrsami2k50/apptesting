@@ -10,6 +10,9 @@ import numpy as np
 import pandas as pd
 import yfinance as yf
 import matplotlib.pyplot as plt  # now safe
+from matplotlib.figure import Figure
+import io
+import base64
 from sklearn.preprocessing import MinMaxScaler
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM, Dense
@@ -87,13 +90,15 @@ for i, price in enumerate(predictions, 1):
 
 # Plot historical + predicted
 future_dates = pd.date_range(start=df['Date'].iloc[-1] + pd.Timedelta(days=1), periods=7)
-plt.figure(figsize=(10,6))
-plt.plot(df['Date'], close_prices, label='Historical Close Price')
-plt.plot(future_dates, predictions, label='Predicted Next 7 Days', marker='o')
-plt.xlabel('Date')
-plt.ylabel('Price (NT$)')
-plt.title(f'Stock Price Prediction for {company_name}')
-plt.legend()
+# Create figure
+fig = Figure(figsize=(10,6))
+ax = fig.subplots()
+ax.plot(df['Date'], close_prices, label='Historical Close Price')
+ax.plot(future_dates, predictions, label='Predicted Next 7 Days', marker='o')
+ax.set_xlabel('Date')
+ax.set_ylabel('Price (NT$)')
+ax.set_title(f'Stock Price Prediction for {company_name}')
+ax.legend()
 
-# Show plot in Streamlit
-st.pyplot(plt.gcf())
+# Render figure in Streamlit
+st.pyplot(fig)gcf())
